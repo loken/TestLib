@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace GauteLo.TestLib
+namespace Loken.TestLib
 {
     public class StringExtensionTests
     {

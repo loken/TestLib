@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>GauteLo.TestLib</AssemblyName>
-    <RootNamespace>GauteLo.TestLib</RootNamespace>
+    <AssemblyName>Loken.TestLib</AssemblyName>
+    <RootNamespace>Loken.TestLib</RootNamespace>
   </PropertyGroup>
 
 </Project>

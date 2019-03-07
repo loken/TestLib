@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GauteLo.TestLib
+namespace Loken.TestLib
 {
     /// <summary>
     /// Convenience extensions to <see cref="string"/>.
