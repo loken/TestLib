@@ -5,10 +5,16 @@
     <AssemblyName>Loken.TestLib</AssemblyName>
     <RootNamespace>Loken.TestLib</RootNamespace>
   </PropertyGroup>
-  
+
+  <!--SourceLink-->
   <PropertyGroup>
-    <!--SourceLink config-->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <!--Symbols - option A: Include in the nuget package-->
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <!--Symbols - option B: Separate package for symbol server-->
+    <!--<IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>-->
   </PropertyGroup>
   
   <ItemGroup>
