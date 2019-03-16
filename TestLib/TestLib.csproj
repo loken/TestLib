@@ -6,6 +6,16 @@
     <RootNamespace>Loken.TestLib</RootNamespace>
   </PropertyGroup>
 
+  <!--NuGet-->
+  <PropertyGroup>
+    <Description>Testing how to set up a basic c# library with ci and nuget publishing.</Description>
+    <Authors>Gaute Løken</Authors>
+    <PackageTags>Test</PackageTags>
+    <PackageIconUrl></PackageIconUrl>
+    <PackageProjectUrl>https://github.com/loken/TestLib</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+  
   <!--SourceLink-->
   <PropertyGroup>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
