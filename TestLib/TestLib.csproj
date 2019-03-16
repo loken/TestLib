@@ -28,6 +28,7 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <PackageReference Include="GitVersionTask" Version="4.0.1-beta*" PrivateAssets="All"/>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-18618-05" PrivateAssets="All"/>
   </ItemGroup>
 
