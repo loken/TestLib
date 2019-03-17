@@ -31,7 +31,7 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)/**/MyLibrary*.nupkg'
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
     artifactName: packages
     artifactType: Container
   displayName: Publish artifacts
