@@ -26,12 +26,12 @@ steps:
     testResultsFiles: '**/*.trx'
   displayName: Publish test results
 
-- script: dotnet pack -c $(bConfig) --no-build -o '$(Build.ArtifactStagingDirectory)'
+- script: dotnet pack -c $(bConfig) --no-build -o '$(Build.ArtifactStagingDirectory)/packages'
   displayName: Create package
 
 - task: PublishBuildArtifacts@1
   inputs:
-    pathtoPublish: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)/packages'
     artifactName: packages
     artifactType: Container
-  displayName: Publish artifacts
+  displayName: Publish nuget artifacts
