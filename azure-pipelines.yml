@@ -1,23 +1,50 @@
-# ASP.NET Core
-# Build and test ASP.NET Core projects targeting .NET Core.
-# Add steps that run tests, create a NuGet package, deploy, and more:
+# dotnet core
+# Build, test and publish to ci-feed/nuget.org
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
 - master
+- develop
 
 pool:
   vmImage: 'Ubuntu-16.04'
 
 variables:
-  buildConfiguration: 'Release'
+  bConfig: 'Release'
 
 steps:
-- script: |
-    dotnet build --configuration $(buildConfiguration)
-    dotnet test --configuration $(buildConfiguration) --logger trx
+- script: dotnet build -c $(bConfig) --no-build
+  displayName: Build
+
+- script: dotnet test -c $(bConfig) --no-build --logger trx
+  displayName: Test
+
 - task: PublishTestResults@2
   condition: succeededOrFailed()
   inputs:
     testRunner: VSTest
     testResultsFiles: '**/*.trx'
+  displayName: Publish test results
+
+- script: dotnet pack -c $(bConfig) --no-build -o '$(Build.ArtifactStagingDirectory)'
+  displayName: Create package
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'push'
+    nuGetFeedType: 'internal'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    publishVstsFeed: 'Dev'
+  condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
+  displayName: Internal NuGet publish (Dev@LokenData)
+
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'push'
+    nuGetFeedType: 'external'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    publishFeedCredentials: 'Loken@NuGet.org'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  displayName: External NuGet publish (Loken@NuGet.org)
+  
