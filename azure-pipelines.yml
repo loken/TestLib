@@ -28,3 +28,10 @@ steps:
 
 - script: dotnet pack -c $(bConfig) --no-build -o '$(Build.ArtifactStagingDirectory)'
   displayName: Create package
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(Build.ArtifactStagingDirectory)/**/MyLibrary*.nupkg'
+    artifactName: packages
+    artifactType: Container
+  displayName: Publish artifacts
