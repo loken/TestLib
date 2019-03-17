@@ -13,7 +13,7 @@ variables:
   bConfig: 'Release'
 
 steps:
-- script: dotnet build -c $(bConfig) --no-build
+- script: dotnet build -c $(bConfig)
   displayName: Build
 
 - script: dotnet test -c $(bConfig) --no-build --logger trx
