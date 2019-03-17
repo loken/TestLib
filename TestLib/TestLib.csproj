@@ -15,9 +15,9 @@
     <PackageProjectUrl>https://github.com/loken/TestLib</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <!--Use Semver 2.0 despite old clients unable to read this format-->
-    <UseFullSemVerForNuGet>true</UseFullSemVerForNuGet>
+    <!--<UseFullSemVerForNuGet>true</UseFullSemVerForNuGet>
     <MinClientVersion>4.3.0</MinClientVersion>
-    <NoWarn>NU5105</NoWarn>
+    <NoWarn>NU5105</NoWarn>-->
   </PropertyGroup>
   
   <!--SourceLink-->
