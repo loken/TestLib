@@ -28,23 +28,3 @@ steps:
 
 - script: dotnet pack -c $(bConfig) --no-build -o '$(Build.ArtifactStagingDirectory)'
   displayName: Create package
-
-- task: NuGetCommand@2
-  inputs:
-    command: 'push'
-    nuGetFeedType: 'internal'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-    publishVstsFeed: 'Dev'
-  condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
-  displayName: Internal NuGet publish (Dev@LokenData)
-
-
-- task: NuGetCommand@2
-  inputs:
-    command: 'push'
-    nuGetFeedType: 'external'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-    publishFeedCredentials: 'Loken@NuGet.org'
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-  displayName: External NuGet publish (Loken@NuGet.org)
-  
